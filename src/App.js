@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import LeftBar from './components/LeftBar';
+import Explore from './components/Explore';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
         <div class="col-md-auto">
           <LeftBar />
         </div>
-        <div class="col col-lg-2">
-          2 of 2
+        <div class="col">
+          <Explore />
         </div>
       </div>
     </div>
