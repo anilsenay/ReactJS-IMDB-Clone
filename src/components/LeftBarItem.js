@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export default function LeftBarItem(props) {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [films, setFilms] = useState([])
+
+    useEffect(() => {
+        axios.get(props.films).then(obj => {
+                setFilms(obj.data.results.splice(0,5))
+        })
+    })
 
     return (
         <div>
@@ -14,46 +21,23 @@ export default function LeftBarItem(props) {
                 </div>
                 {isOpen ? 
                 <div>
-                    <div className="left-bar-film">
-                        <img src="https://picsum.photos/id/10/40/40" className="left-bar-film-image"/>
-                        <div className="left-bar-film-info">
-                            <span style={{fontWeight:"bold"}}>The Lion King</span>
-                            <span style={{color:"grey"}}>$537.3M</span>
-                        </div>
-                        <span className="imdb-rating">7.8</span>
-                    </div>
-                    <div className="left-bar-film">
-                        <img src="https://picsum.photos/id/12/40/40" className="left-bar-film-image"/>
-                        <div className="left-bar-film-info">
-                            <span style={{fontWeight:"bold"}}>The Lion King</span>
-                            <span style={{color:"grey"}}>$537.3M</span>
-                        </div>
-                        <span className="imdb-rating">7.8</span>
-                    </div>
-                    <div className="left-bar-film">
-                        <img src="https://picsum.photos/id/20/40/40" className="left-bar-film-image"/>
-                        <div className="left-bar-film-info">
-                            <span style={{fontWeight:"bold"}}>The Lion King</span>
-                            <span style={{color:"grey"}}>$537.3M</span>
-                        </div>
-                        <span className="imdb-rating">7.8</span>
-                    </div>
-                    <div className="left-bar-film">
-                        <img src="https://picsum.photos/id/30/40/40" className="left-bar-film-image"/>
-                        <div className="left-bar-film-info">
-                            <span style={{fontWeight:"bold"}}>The Lion King</span>
-                            <span style={{color:"grey"}}>$537.3M</span>
-                        </div>
-                        <span className="imdb-rating">7.8</span>
-                    </div>
-                    <div className="left-bar-film">
-                        <img src="https://picsum.photos/id/10/40/40" className="left-bar-film-image"/>
-                        <div className="left-bar-film-info">
-                            <span style={{fontWeight:"bold"}}>The Lion King</span>
-                            <span style={{color:"grey"}}>$537.3M</span>
-                        </div>
-                        <span className="imdb-rating">7.8</span>
-                    </div>
+                    {
+                        films.map(film => {
+                            return (
+                                <div className="left-bar-film">
+                                    <div style={{margin:"auto"}}>
+                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className="left-bar-film-image"/>
+                                    </div>
+                                    <div className="left-bar-film-info">
+                                        <span style={{fontWeight:"bold"}}>{film.original_title}</span>
+                                        <span style={{color:"grey"}}>$537.3M</span>
+                                    </div>
+                                    <span className="imdb-rating">{film.vote_average}</span>
+                                </div>
+                            )
+                        })
+                    }
+                    
                     <span className="more-result-text">MORE RESULT</span>
                 </div> : null}
             </div>

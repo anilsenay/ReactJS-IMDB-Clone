@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios'
 
 const filterCounter = 0
 
 export default function Explore() {
+
     return (
         <div className="explore">
             <h1 className="explore-text">Explore</h1>
@@ -11,6 +13,7 @@ export default function Explore() {
                 <span className="filter-counter">0</span>
                 <span className="font-weight-bold" style={{margin:"auto",marginLeft:"10px"}}>All Filters</span>
             </div>
+
         </div>
     )
 }
