@@ -1,4 +1,5 @@
 import React from 'react'
+import ExploreCategory from './ExploreCategory'
 
 const filterCounter = 0
 
@@ -12,6 +13,9 @@ export default function Explore() {
                 <span className="filter-counter">0</span>
                 <span className="font-weight-bold" style={{margin:"auto",marginLeft:"10px"}}>All Filters</span>
             </div>
+            <ExploreCategory title="Trendings"/>
+            <ExploreCategory title="Top Movies 2019"/>
+            <ExploreCategory title="Top Rated Movies"/>
 
         </div>
     )

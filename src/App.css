@@ -3,6 +3,10 @@ body{
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 .container-custom{
   height: 100%;
   background-color: transparent;
@@ -130,4 +134,20 @@ body{
   text-align: center;
   font-size: 8pt;
   font-weight: bold;
+}
+.explore-image{
+  width: 180px;
+  margin-right: 12px;
+  border-radius: 14px;
+}
+.explore-title{
+  font-size: 20pt;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+.explore-row{
+  margin-top: 15px;
+}
+.explore-category{
+  margin-top: 40px;
 }

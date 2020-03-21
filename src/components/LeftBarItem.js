@@ -32,7 +32,7 @@ export default function LeftBarItem(props) {
                                     </div>
                                     <div className="left-bar-film-info">
                                         <span style={{fontWeight:"bold"}}>{film.original_title}</span>
-                                        <span style={{color:"grey"}}>$537.3M</span>
+                                        <span style={{color:"grey"}}>{`${film.release_date}`}</span>
                                     </div>
                                     <span className="imdb-rating">{film.vote_average}</span>
                                 </div>
