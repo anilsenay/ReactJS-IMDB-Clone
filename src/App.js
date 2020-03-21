@@ -8,11 +8,11 @@ function App() {
   return (
     <div className="container container-custom">
       <NavBar/>
-      <div class="row row-custom">
-        <div class="col-md-auto">
+      <div className="row row-custom">
+        <div className="col-md-auto">
           <LeftBar />
         </div>
-        <div class="col">
+        <div className="col">
           <Explore />
         </div>
       </div>

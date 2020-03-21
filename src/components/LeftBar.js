@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import LeftBarItem from './LeftBarItem'
+import LeftBarTopImage from './LeftBarTopImage'
 
 export default function LeftBar() {
 
@@ -10,9 +10,9 @@ export default function LeftBar() {
 
     return (
         <div className="leftbar">
-            <img src="https://picsum.photos/seed/picsum/300/200" className="top-photo"/>
+            <LeftBarTopImage />
         
-            <LeftBarItem text="Popular" films={popularUrl}/>
+            <LeftBarItem text="Popular" films={popularUrl} popularImage={(url) => console.log(url)}/>
             <LeftBarItem text="Now Playing" films={nowPlayingUrl}/>
             <LeftBarItem text="Coming Soon" films={comingSoonUrl}/>
 

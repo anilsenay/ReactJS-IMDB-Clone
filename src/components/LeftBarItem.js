@@ -12,6 +12,8 @@ export default function LeftBarItem(props) {
         })
     })
 
+    
+
     return (
         <div>
             <div className={`left-bar-item ${isOpen ? "left-bar-item-open" : ""}`}>
@@ -24,9 +26,9 @@ export default function LeftBarItem(props) {
                     {
                         films.map(film => {
                             return (
-                                <div className="left-bar-film">
+                                <div key={film.original_title} className="left-bar-film">
                                     <div style={{margin:"auto"}}>
-                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className="left-bar-film-image"/>
+                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className="left-bar-film-image" alt={film.original_title}/>
                                     </div>
                                     <div className="left-bar-film-info">
                                         <span style={{fontWeight:"bold"}}>{film.original_title}</span>
