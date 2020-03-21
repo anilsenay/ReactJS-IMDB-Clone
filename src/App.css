@@ -137,8 +137,9 @@ a:hover{
 }
 .explore-image{
   width: 180px;
-  margin-right: 12px;
+  margin: 6px;
   border-radius: 14px;
+  cursor: pointer;
 }
 .explore-title{
   font-size: 20pt;
