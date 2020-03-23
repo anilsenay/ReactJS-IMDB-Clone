@@ -9,11 +9,10 @@ export default class ExploreCategory extends Component {
         }
     }
 
-    componentDidMount() {
-    axios.get(this.props.apiURL)
-        .then(obj => {
-        const movies = obj.data.results.splice(0,4);
-        this.setState({ movies });
+    componentDidMount = async () => {
+        const movies = await axios.get(this.props.apiURL)
+        this.setState({
+            movies: movies.data.results.splice(0,4)
         })
     }
 

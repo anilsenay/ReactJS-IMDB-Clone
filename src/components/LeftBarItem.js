@@ -7,12 +7,13 @@ export default function LeftBarItem(props) {
     const [films, setFilms] = useState([])
 
     useEffect(() => {
-        axios.get(props.films).then(obj => {
-                setFilms(obj.data.results.splice(0,5))
-        })
+        getData()
     })
 
-    
+    const getData = async () => {
+        const films = await axios.get(props.films)
+        setFilms(films.data.results.splice(0,5))
+    }
 
     return (
         <div>
