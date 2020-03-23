@@ -17,7 +17,6 @@ export default class ExploreCategory extends Component {
     }
 
     render() {
-        console.log(this.state.movies)
         return (
             <div className="explore-category">
                 <span className="explore-title">{this.props.title}</span>
@@ -25,7 +24,7 @@ export default class ExploreCategory extends Component {
                     {
                         this.state.movies.map(film => {
                             return(
-                                <div key={film.title} class="">
+                                <div key={Math.random()}>
                                     <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
                                 </div>
                             )
@@ -34,7 +33,7 @@ export default class ExploreCategory extends Component {
                     
                 </div>
                 <a href="/" style={{fontSize: "13pt", margin:"10px -5px", display: "inherit"}}>
-                    See All {this.props.title} <i class="fas fa-angle-double-right" style={{color: "grey", fontSize:"10pt"}}></i>
+                    See All {this.props.title} <i className="fas fa-angle-double-right" style={{color: "grey", fontSize:"10pt"}}></i>
                 </a>
             </div>
         )

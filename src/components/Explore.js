@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ExploreCategory from './ExploreCategory'
+import axios from 'axios'
 
 const filterCounter = 0
 
@@ -11,19 +12,69 @@ const topSeries2019URL = "https://api.themoviedb.org/3/discover/tv?api_key=ee5e7
 
 export default function Explore() {
 
+    const [searchText, setSearchText] = useState("")
+    const [searchedMovies, setSearchedMovies] = useState([])
+    const [isSearched, setIsSearched] = useState(false)
+
+    const handleChange = (event) =>{
+        if(event.target.value !== searchText){
+            setSearchText(event.target.value)
+            setIsSearched(true)
+        }
+    }
+
+    useEffect(() => {
+        if(isSearched !== false)
+            getData()
+    })
+
+    const getData = async () => {
+        const films = await axios.get("https://api.themoviedb.org/3/search/multi?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&query="+searchText+"&page=1&include_adult=false")
+        const tempArray = []
+        films.data.results.splice(0,20).map(film => {
+            film.poster_path !== undefined && film.poster_path !== null ? tempArray.push(film) : void(0)
+        })
+        if(tempArray.length !== searchedMovies){
+            setSearchedMovies(tempArray)
+            setIsSearched(false)
+        }
+    }
+ 
     return (
         <div className="explore">
             <h1 className="explore-text">Explore</h1>
             <div className="search-filters-bar">
-                <input className="form-control search-box" type="text" placeholder="Search" aria-label="Search"></input>
+                <input className="form-control search-box" type="text" placeholder="Search" aria-label="Search" onChange={handleChange}></input>
                 <span className="filter-counter">0</span>
                 <span className="font-weight-bold" style={{margin:"auto",marginLeft:"10px"}}>All Filters</span>
             </div>
-            <ExploreCategory title="Trendings" apiURL={trendingsURL}/>
-            <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL}/>
-            <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL}/>
-            <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL}/>
-            <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL}/>
+            {
+                searchText.length === 0 ? 
+                (
+                <div>
+                    <ExploreCategory title="Trendings" apiURL={trendingsURL}/>
+                    <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL}/>
+                    <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL}/>
+                    <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL}/>
+                    <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL}/>
+                </div>
+                )
+                :
+                (
+                <div className="row explore-row">
+                    {
+                        searchedMovies.map(film => {
+                            return(
+                                <div key={Math.random()}>
+                                    <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                )
+            }
+            
 
         </div>
     )
