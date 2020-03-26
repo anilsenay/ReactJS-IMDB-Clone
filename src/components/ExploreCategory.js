@@ -16,7 +16,7 @@ export default class ExploreCategory extends Component {
             movies: movies.data.results.splice(0,4)
         })
     }
-
+    
     render() {
         return (
             <div className="explore-category">
@@ -26,7 +26,7 @@ export default class ExploreCategory extends Component {
                         this.state.movies.map(film => {
                             return(
                                 <div key={Math.random()}>
-                                    <Link to={`/details/movie/${film.id}`}>
+                                    <Link to={`/details/${this.props.type}/${film.id}`}>
                                         <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
                                     </Link>
                                 </div>

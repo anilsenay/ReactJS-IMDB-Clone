@@ -40,7 +40,7 @@ export default function Explore() {
             setIsSearched(false)
         }
     }
- 
+    console.log(searchedMovies)
     return (
         <div className="explore">
             <h1 className="explore-text">Explore</h1>
@@ -53,11 +53,11 @@ export default function Explore() {
                 searchText.length === 0 ? 
                 (
                 <div>
-                    <ExploreCategory title="Trendings" apiURL={trendingsURL}/>
-                    <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL}/>
-                    <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL}/>
-                    <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL}/>
-                    <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL}/>
+                    <ExploreCategory title="Trendings" apiURL={trendingsURL} type="movie"/>
+                    <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL} type="movie"/>
+                    <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL} type="movie"/>
+                    <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL} type="tv"/>
+                    <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL} type="tv"/>
                 </div>
                 )
                 :
@@ -67,7 +67,7 @@ export default function Explore() {
                         searchedMovies.map(film => {
                             return(
                                 <div key={film.id}>
-                                    <Link to={`/details/movie/${film.id}`}>
+                                    <Link to={`/details/${film.media_type}/${film.id}`}>
                                         <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
                                     </Link>
                                 </div>

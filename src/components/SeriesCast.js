@@ -2,21 +2,19 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import FilmFullCast from './FilmFullCast'
 
-export default function FilmCast(props) {
+export default function SeriesCast(props) {
 
-    const [filmCast, setFilmCast] = useState([])
-    const [filmDirector, setFilmDirector] = useState([])
-    const [filmWriter, setFilmWriter] = useState([])
+    const [seriesCast, setSeriesCast] = useState([])
     const [filmStars, setFilmStars] = useState([])
     const [getDetails, setGetDetails] = useState(false)
     const [isButtonClicked, setButtonClicked] = useState(false)
 
     useEffect(() => {
-        if(filmCast.length === 0){
+        if(seriesCast.length === 0){
             getData()
         }
         //if movie changed
-        if(parseInt(filmCast.id) !== parseInt(props.id)){
+        if(parseInt(seriesCast.id) !== parseInt(props.id)){
             getData()
         }
         //if we got movie data absolutely
@@ -27,40 +25,23 @@ export default function FilmCast(props) {
     })
 
     const getData = async () => {
-        const data = await axios.get(`https://api.themoviedb.org/3/movie/${props.id}/credits?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8`)
-        setFilmCast(data.data)
+        const data = await axios.get(`https://api.themoviedb.org/3/tv/${props.id}/credits?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8`)
+        setSeriesCast(data.data)
         setGetDetails(true)
     }
 
     const getCrew = () => {
         const stars = []
-        const directors = []
-        const writers = []
 
-        filmCast.crew.map(person => {
-            if(person.job === "Director")
-                directors.push(person.name)
-            if(person.job === "Screenplay" || person.job === "Writer")
-                writers.push(person.name)
-        })
-        filmCast.cast.map(person => {
+        seriesCast.cast.map(person => {
             stars.push(person.name)
         })
-        setFilmDirector(directors)
-        setFilmWriter(writers)
+
         setFilmStars(stars.splice(0,3))
     }
 
     return (
-        <div className="film-cast-short">
-            <div className="director">
-                <span style={{fontWeight: "bold"}}>Director: </span>
-                {filmDirector.join(", ")}
-            </div>
-            <div className="writers">
-                <span style={{fontWeight: "bold"}}>Writers: </span>
-                {filmWriter.join(", ")}
-            </div>
+        <div>
             <div className="stars">
                 <span style={{fontWeight: "bold"}}>Stars: </span>
                 {filmStars.join(", ")}
@@ -70,7 +51,7 @@ export default function FilmCast(props) {
             </span>
             {
                 isButtonClicked ? 
-                    <FilmFullCast cast={filmCast}/>
+                    <FilmFullCast cast={seriesCast}/>
                     :
                     ""
             }
