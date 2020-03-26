@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import YouTube from '@u-wave/react-youtube'
+import FilmCast from './FilmCast'
 
 export default function Details(props) {
 
@@ -76,7 +77,7 @@ export default function Details(props) {
             </div>
 
             <div className="film-details-overview">{filmData.overview}</div>
-
+            <FilmCast id={filmData.id}/>
         </div>
     )
 }
