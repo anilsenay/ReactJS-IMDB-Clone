@@ -1,22 +1,14 @@
 import React from 'react';
-import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import LeftBar from './components/LeftBar';
-import Explore from './components/Explore';
+import Home from './components/Home'
+import { Router, Route, hashHistory, HashRouter, withRouter } from 'react-router-dom'
+import FilmDetails from './components/FilmDetails';
 
 function App() {
   return (
-    <div className="container container-custom">
-      <NavBar/>
-      <div className="row row-custom">
-        <div className="col-md-auto">
-          <LeftBar />
-        </div>
-        <div className="col">
-          <Explore />
-        </div>
-      </div>
-    </div>
+    <HashRouter basename='/'>
+      <Route exact path='/' component={Home}/>
+      <Route path='/details/:type/:id' component={withRouter(FilmDetails)}/>
+    </HashRouter>
   );
 }
 

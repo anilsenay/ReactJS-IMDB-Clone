@@ -15,7 +15,6 @@ export default class LeftBarTopImage extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="top-photo-container">
                 <img src={this.state.filmUrl} className="top-photo" alt={this.state.filmTitle}/>

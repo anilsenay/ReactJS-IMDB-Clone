@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link, Router } from 'react-router-dom'
 
 export default function LeftBarItem(props) {
 
@@ -7,7 +8,8 @@ export default function LeftBarItem(props) {
     const [films, setFilms] = useState([])
 
     useEffect(() => {
-        getData()
+        if(films.length === 0)
+            getData()
     })
 
     const getData = async () => {
@@ -27,16 +29,20 @@ export default function LeftBarItem(props) {
                     {
                         films.map(film => {
                             return (
-                                <div key={film.original_title} className="left-bar-film">
-                                    <div style={{margin:"auto"}}>
-                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className="left-bar-film-image" alt={film.original_title}/>
-                                    </div>
-                                    <div className="left-bar-film-info">
-                                        <span style={{fontWeight:"bold"}}>{film.original_title}</span>
-                                        <span style={{color:"grey"}}>{`${film.release_date}`}</span>
-                                    </div>
-                                    <span className="imdb-rating">{film.vote_average}</span>
-                                </div>
+                                    <Link key={film.original_title} to={`/details/movie/${film.id}`}>
+                                        <div className="left-bar-film">
+                                        
+                                            <div style={{margin:"auto"}}>
+                                                <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className="left-bar-film-image" alt={film.original_title}/>
+                                            </div>
+                                            <div className="left-bar-film-info">
+                                                <span className="left-bar-film-title">{film.original_title}</span>
+                                                <span style={{color:"grey"}}>{`${film.release_date}`}</span>
+                                            </div>
+                                            <span className="imdb-rating">{film.vote_average}</span>
+                                        
+                                        </div>
+                                    </Link>
                             )
                         })
                     }

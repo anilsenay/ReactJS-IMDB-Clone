@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class ExploreCategory extends Component {
     constructor(props){
@@ -25,7 +26,9 @@ export default class ExploreCategory extends Component {
                         this.state.movies.map(film => {
                             return(
                                 <div key={Math.random()}>
-                                    <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
+                                    <Link to={`/details/movie/${film.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
+                                    </Link>
                                 </div>
                             )
                         })

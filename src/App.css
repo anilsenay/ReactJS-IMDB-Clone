@@ -123,6 +123,13 @@ a:hover{
   margin-left: 12px;
   width: 100%;
 }
+.left-bar-film-title{
+  color: white;
+  font-weight: bold;
+}
+.left-bar-film-title:hover{
+  color: #a1a1a1;
+}
 .imdb-rating{
   margin: auto;
   font-size: 10pt;
@@ -153,4 +160,31 @@ a:hover{
 }
 .explore-category{
   margin-top: 40px;
+}
+.film-details{
+  margin-top: 25px;
+}
+.film-details-year{
+  margin-left: 10px;
+  font-size: 22pt;
+  vertical-align: middle;
+  color: #5e5e5e;
+}
+.film-details-media{
+  display: flex;
+  margin-top: 30px;
+}
+.film-details-video{
+  border-radius: 14px;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+  margin-left: 15px;
+}
+
+.film-details-subtext-text{
+  font-size: 16pt;
+  margin-left: 5px;
+}
+.film-details-overview{
+  max-width: 670px;
+  margin-top: 30px;
 }

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ExploreCategory from './ExploreCategory'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const filterCounter = 0
 
@@ -46,7 +47,7 @@ export default function Explore() {
             <div className="search-filters-bar">
                 <input className="form-control search-box" type="text" placeholder="Search" aria-label="Search" onChange={handleChange}></input>
                 <span className="filter-counter">0</span>
-                <span className="font-weight-bold" style={{margin:"auto",marginLeft:"10px"}}>All Filters</span>
+                <span className="font-weight-bold" style={{margin:"auto",marginLeft:"10px",cursor:"pointer"}}>All Filters</span>
             </div>
             {
                 searchText.length === 0 ? 
@@ -65,8 +66,10 @@ export default function Explore() {
                     {
                         searchedMovies.map(film => {
                             return(
-                                <div key={Math.random()}>
-                                    <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
+                                <div key={film.id}>
+                                    <Link to={`/details/movie/${film.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w200`+film.poster_path} className = "explore-image" alt=""/>
+                                    </Link>
                                 </div>
                             )
                         })
