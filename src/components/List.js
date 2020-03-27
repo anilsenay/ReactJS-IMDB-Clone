@@ -10,14 +10,20 @@ export default function List(props) {
         "top-movies-2019" : "https://api.themoviedb.org/3/discover/movie?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&page=1&primary_release_year=2019&vote_count.gte=2000&with_original_language=en",
         "top-rated-movies" : "https://api.themoviedb.org/3/discover/movie?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=10000&with_original_language=en",
         "top-rated-series" : "https://api.themoviedb.org/3/discover/tv?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&page=1&vote_count.gte=500&include_null_first_air_dates=false",
-        "top-series-2019" : "https://api.themoviedb.org/3/discover/tv?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&first_air_date_year=2019&page=1&vote_count.gte=100&include_null_first_air_dates=false"
+        "top-series-2019" : "https://api.themoviedb.org/3/discover/tv?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&first_air_date_year=2019&page=1&vote_count.gte=100&include_null_first_air_dates=false",
+        "popular" : "https://api.themoviedb.org/3/movie/popular?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&page=1",
+        "now-playing" : "https://api.themoviedb.org/3/movie/now_playing?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&page=1",
+        "coming-soon" : "https://api.themoviedb.org/3/movie/upcoming?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&page=1&region=us"
     }
     const listTitles = {
         "trendings" : "Trendings",
         "top-movies-2019" : "Top Movies 2019",
         "top-rated-movies" : "Top Rated Movies",
         "top-rated-series" : "Top Rated Series",
-        "top-series-2019" : "Top Series 2019"
+        "top-series-2019" : "Top Series 2019",
+        "popular" : "Popular",
+        "now-playing" : "Now Playing",
+        "coming-soon" : "Coming Soon"
     }
 
     const url = filmURLs[props.match.params.listType]

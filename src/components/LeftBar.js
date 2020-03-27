@@ -12,9 +12,9 @@ export default function LeftBar() {
         <div className="leftbar">
             <LeftBarTopImage />
         
-            <LeftBarItem text="Popular" films={popularUrl} popularImage={(url) => console.log(url)}/>
-            <LeftBarItem text="Now Playing" films={nowPlayingUrl}/>
-            <LeftBarItem text="Coming Soon" films={comingSoonUrl}/>
+            <LeftBarItem text="Popular" films={popularUrl} link="popular"/>
+            <LeftBarItem text="Now Playing" films={nowPlayingUrl} link="now-playing"/>
+            <LeftBarItem text="Coming Soon" films={comingSoonUrl} link="coming-soon"/>
 
         </div>
     )

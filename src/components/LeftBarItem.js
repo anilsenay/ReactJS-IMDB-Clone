@@ -46,8 +46,9 @@ export default function LeftBarItem(props) {
                             )
                         })
                     }
-                    
-                    <span className="more-result-text">MORE RESULT</span>
+                    <Link to={`/lists/${props.link}`}>
+                        <span className="more-result-text">MORE RESULT</span>
+                    </Link>
                 </div> : null}
             </div>
         </div>
