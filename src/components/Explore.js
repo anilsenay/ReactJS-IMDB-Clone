@@ -3,7 +3,7 @@ import ExploreCategory from './ExploreCategory'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const filterCounter = 0
+//const filterCounter = 0
 
 const topMovies2019URL = "https://api.themoviedb.org/3/discover/movie?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8&language=en-US&sort_by=vote_average.desc&page=1&primary_release_year=2019&vote_count.gte=2000&with_original_language=en"
 const trendingsURL = "https://api.themoviedb.org/3/trending/movie/week?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8"
@@ -34,6 +34,7 @@ export default function Explore() {
         const tempArray = []
         films.data.results.splice(0,20).map(film => {
             film.poster_path !== undefined && film.poster_path !== null ? tempArray.push(film) : void(0)
+            return true;
         })
         if(tempArray.length !== searchedMovies){
             setSearchedMovies(tempArray)
@@ -53,11 +54,11 @@ export default function Explore() {
                 searchText.length === 0 ? 
                 (
                 <div>
-                    <ExploreCategory title="Trendings" apiURL={trendingsURL} type="movie"/>
-                    <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL} type="movie"/>
-                    <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL} type="movie"/>
-                    <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL} type="tv"/>
-                    <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL} type="tv"/>
+                    <ExploreCategory title="Trendings" apiURL={trendingsURL} type="movie" link="trendings"/>
+                    <ExploreCategory title="Top Movies 2019" apiURL={topMovies2019URL} type="movie" link="top-movies-2019"/>
+                    <ExploreCategory title="Top Rated Movies" apiURL={topRatedMoviesURL} type="movie" link="top-rated-movies"/>
+                    <ExploreCategory title="Top TV Series 2019" apiURL={topSeries2019URL} type="tv" link="top-series-2019"/>
+                    <ExploreCategory title="Top Rated TV Series" apiURL={topRatedSeriesURL} type="tv" link="top-rated-series"/>
                 </div>
                 )
                 :

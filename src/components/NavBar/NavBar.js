@@ -43,7 +43,7 @@ export default function NavBar() {
     return (
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-custom"> 
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
                 <img src={logo} height="40" alt=""/>
             </a>
             <div className="collapse navbar-collapse float-right" id="navbarNavDropdown">

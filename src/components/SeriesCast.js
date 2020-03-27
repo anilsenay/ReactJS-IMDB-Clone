@@ -5,8 +5,8 @@ import FilmFullCast from './FilmFullCast'
 export default function SeriesCast(props) {
 
     const [seriesCast, setSeriesCast] = useState([])
-    const [filmStars, setFilmStars] = useState([])
-    const [getDetails, setGetDetails] = useState(false)
+    const [seriesStars, setSeriesStars] = useState([])
+    const [getSeriesDetails, setGetSeriesDetails] = useState(false)
     const [isButtonClicked, setButtonClicked] = useState(false)
 
     useEffect(() => {
@@ -18,33 +18,33 @@ export default function SeriesCast(props) {
             getData()
         }
         //if we got movie data absolutely
-        if(getDetails){
+        if(getSeriesDetails){
             getCrew()
-            setGetDetails(false)
+            setGetSeriesDetails(false)
         }
     })
 
     const getData = async () => {
         const data = await axios.get(`https://api.themoviedb.org/3/tv/${props.id}/credits?api_key=ee5e74e39e7bb0a1514fd8909bbd92f8`)
         setSeriesCast(data.data)
-        setGetDetails(true)
+        setGetSeriesDetails(true)
     }
 
     const getCrew = () => {
         const stars = []
 
         seriesCast.cast.map(person => {
-            stars.push(person.name)
+            return stars.push(person.name)
         })
 
-        setFilmStars(stars.splice(0,3))
+        setSeriesStars(stars.splice(0,3))
     }
 
     return (
         <div>
             <div className="stars">
                 <span style={{fontWeight: "bold"}}>Stars: </span>
-                {filmStars.join(", ")}
+                {seriesStars.join(", ")}
             </div>
             <span className="see-all-cast" onClick={() => {setButtonClicked(!isButtonClicked)}}>
                     {isButtonClicked ? `Hide All Cast` : `See All Cast`} <i className="fas fa-angle-double-right" style={{color: "grey", fontSize:"10pt"}}></i>

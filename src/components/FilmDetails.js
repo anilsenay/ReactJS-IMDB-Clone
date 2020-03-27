@@ -27,7 +27,7 @@ export default function FilmDetails(props) {
         setFilmData(data.data)
         const genres = []
         data.data.genres.splice(0,2).map(genre => {
-            genres.push(genre.name)
+            return genres.push(genre.name)
         })
         setFilmGenres(genres)
         setFilmTime(convertTime(data.data.runtime))

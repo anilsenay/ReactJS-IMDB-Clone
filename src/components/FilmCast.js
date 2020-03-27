@@ -39,12 +39,13 @@ export default function FilmCast(props) {
 
         filmCast.crew.map(person => {
             if(person.job === "Director")
-                directors.push(person.name)
+                return directors.push(person.name)
             if(person.job === "Screenplay" || person.job === "Writer")
-                writers.push(person.name)
+                return writers.push(person.name)
+            return true;
         })
         filmCast.cast.map(person => {
-            stars.push(person.name)
+            return stars.push(person.name)
         })
         setFilmDirector(directors)
         setFilmWriter(writers)
