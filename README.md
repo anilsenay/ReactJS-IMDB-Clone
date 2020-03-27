@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## IMDB clone with using React + Axios + Router
 
+Demo: http://anilsenay.wtf/ReactJS-IMDB-Clone/
+
 UI Design: https://dribbble.com/shots/7228236-IMDb-website-concept
 
 ![img1](https://i.ibb.co/BngksRx/Screenshot-20200323-191729.png)
